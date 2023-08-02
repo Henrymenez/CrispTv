@@ -17,9 +17,6 @@ public class PayStackController : ControllerBase
     }
 
     [HttpPost("make-payment")]
-    [SwaggerOperation(Summary = "Make Payment", Description = "Make Payment with Paystack api")]
-    [SwaggerResponse(StatusCodes.Status200OK)]
-    [SwaggerResponse(StatusCodes.Status500InternalServerError, "Internal server error")]
     public async Task<IActionResult> MakePayment(PaymentRequest request)
     {
         var result = await _payStackService.InitalizePayment(request);
@@ -27,10 +24,6 @@ public class PayStackController : ControllerBase
     }
 
     [HttpPut("verify-payment")]
-    [SwaggerOperation(Summary = "Verify Payment by id", Description = "Requires authorization")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Return a Transaction Verify Response")]
-    [SwaggerResponse(StatusCodes.Status500InternalServerError, "Internal server error")]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "Not Found")]
     public async Task<IActionResult> VerifyPayment(string reference)
     {
         var result = await _payStackService.VerifyPayment(reference);
