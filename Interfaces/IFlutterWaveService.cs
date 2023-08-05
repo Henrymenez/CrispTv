@@ -5,6 +5,10 @@ namespace CrispTv.Interfaces;
 
 public interface IFlutterWaveService
 {
-    string InitiatePayment(FlutterWavePaymentDto paymentDto);
-    string PaymentWebhookAsync(decimal amount, string tx_ref, int transactionId);
+    ResultResponse InitiatePayment(FlutterWavePaymentDto paymentDto);
+    ResultResponse PaymentWebhookAsync(decimal amount, string tx_ref, int transactionId);
+
+    Task<BankResponse> BankAccount();
+
+    /*   string Initiate();*/
 }
