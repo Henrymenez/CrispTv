@@ -16,7 +16,7 @@ public class PayStackService : IPayStackService
         PayStack = new PayStackApi(payStackTestKey);
     }
 
-    public async Task<TransactionInitializeResponse> InitalizePayment(PaymentRequest request)
+    public TransactionInitializeResponse InitalizePayment(PaymentRequest request)
     {
 
         TransactionInitializeRequest createRequest = new()
@@ -36,7 +36,7 @@ public class PayStackService : IPayStackService
         throw new NotImplementedException("the payment was unable to go through");
     }
 
-    public async Task<TransactionVerifyResponse> VerifyPayment(string reference)
+    public TransactionVerifyResponse VerifyPayment(string reference)
     {
 
         TransactionVerifyResponse response = PayStack.Transactions.Verify(reference);

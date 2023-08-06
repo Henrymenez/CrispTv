@@ -7,8 +7,7 @@ public interface IFlutterWaveService
 {
     ResultResponse InitiatePayment(FlutterWavePaymentDto paymentDto);
     ResultResponse PaymentWebhookAsync(decimal amount, string tx_ref, int transactionId);
+    Task<BankResponse> BankAccount(FlutterWavePaymentDto paymentDto);
+    bool BankAccountWebHook(HttpRequest req);
 
-    Task<BankResponse> BankAccount();
-
-    /*   string Initiate();*/
 }

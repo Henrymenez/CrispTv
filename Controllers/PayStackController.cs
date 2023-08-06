@@ -17,16 +17,16 @@ public class PayStackController : ControllerBase
     }
 
     [HttpPost("make-payment")]
-    public async Task<IActionResult> MakePayment(PaymentRequest request)
+    public IActionResult MakePayment(PaymentRequest request)
     {
-        var result = await _payStackService.InitalizePayment(request);
+        var result =  _payStackService.InitalizePayment(request);
         return Ok(result);
     }
 
     [HttpPut("verify-payment")]
-    public async Task<IActionResult> VerifyPayment(string reference)
+    public IActionResult VerifyPayment(string reference)
     {
-        var result = await _payStackService.VerifyPayment(reference);
+        var result =  _payStackService.VerifyPayment(reference);
         SuccessResponse response = new()
         {
             IsSuccessful = result.Status,

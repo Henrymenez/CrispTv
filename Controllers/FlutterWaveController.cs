@@ -28,11 +28,23 @@ public class FlutterWaveController : ControllerBase
         return BadRequest(result);
     }
 
-    [HttpPost("make-bank-payment")]
-    public async Task<IActionResult> MakeBankPayment()
+    [HttpPost("make-bankpayment")]
+    public async Task<IActionResult> MakeBankPayment(FlutterWavePaymentDto paymentDto)
     {
-        var result = await _flutterWaveService.BankAccount();
+        var result = await _flutterWaveService.BankAccount(paymentDto);
         return Ok(result);
+    }
+
+    [HttpGet("verify-bankpayment")]
+    public  IActionResult BankWebHook()
+    {
+        HttpRequest request = Request;
+        var result = _flutterWaveService.BankAccountWebHook(request);
+        if (result)
+        {
+            return Ok();
+        }
+        return BadRequest();
     }
 
     [HttpGet("verify-payment")]

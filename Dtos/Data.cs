@@ -8,8 +8,9 @@ public class Data
     public string? account_number { get; set; }
     public string? account_status { get; set; }
     public string? bank_name { get; set; }
-    public DateTime created_at { get; set; }
-    public DateTime expiry_date { get; set; }
+    public long created_at { get; set; }
+    public long expiry_date { get; set; }
     public decimal amount { get; set; }
     public string? note { get; set; }
 }
+
